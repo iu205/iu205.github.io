@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.1.1',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: true,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="之前想着用thor抓旧版本的ipa，然而发现手机是无法实现的。再加上在用的追书神器企业版的证书失效了，就想着还是安装个老版本吧，所以最后还是用fiddler抓iTtunes的数据。 在这过程中，感受就是电脑操作真的方便…Thor设置断点什么的实在太麻烦了，而且写过滤器还要找相关的域名和关键字等等。特别是过滤器的断点，Thor的断点其实是断点加操作（比如替换插入等等）两步结合到了一起，它类似一个脚本">
+<meta name="keywords" content="iOS,ipa,Fiddler,抓包,iOS软件降级安装">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Fiddler获取iOS应用旧版本安装包">
+<meta property="og:url" content="http://yoursite.com/fiddle-ios-ipa/index.html">
+<meta property="og:site_name" content="NULL&#39;s Blog">
+<meta property="og:description" content="之前想着用thor抓旧版本的ipa，然而发现手机是无法实现的。再加上在用的追书神器企业版的证书失效了，就想着还是安装个老版本吧，所以最后还是用fiddler抓iTtunes的数据。 在这过程中，感受就是电脑操作真的方便…Thor设置断点什么的实在太麻烦了，而且写过滤器还要找相关的域名和关键字等等。特别是过滤器的断点，Thor的断点其实是断点加操作（比如替换插入等等）两步结合到了一起，它类似一个脚本">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://i.loli.net/2019/02/25/5c73df49d063e.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/25/5c73dead4c77f.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/25/5c73e082936d3.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/25/5c73e0e2d9e09.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/25/5c73e19dcbd2a.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/25/5c73e35c66d3d.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/25/5c73e362bb78b.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/25/5c73e6535f1d7.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/25/5c73e6652324b.png">
+<meta property="og:updated_time" content="2019-04-18T08:39:27.306Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Fiddler获取iOS应用旧版本安装包">
+<meta name="twitter:description" content="之前想着用thor抓旧版本的ipa，然而发现手机是无法实现的。再加上在用的追书神器企业版的证书失效了，就想着还是安装个老版本吧，所以最后还是用fiddler抓iTtunes的数据。 在这过程中，感受就是电脑操作真的方便…Thor设置断点什么的实在太麻烦了，而且写过滤器还要找相关的域名和关键字等等。特别是过滤器的断点，Thor的断点其实是断点加操作（比如替换插入等等）两步结合到了一起，它类似一个脚本">
+<meta name="twitter:image" content="https://i.loli.net/2019/02/25/5c73df49d063e.png">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="NULL's Blog" type="application/atom+xml">
+
+
+
+  
+  
+  <link rel="canonical" href="http://yoursite.com/fiddle-ios-ipa/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Fiddler获取iOS应用旧版本安装包 | NULL's Blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">NULL's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/fiddle-ios-ipa/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://nullptr-1252418998.cos.ap-shanghai.myqcloud.com/blog/e48952d599dbf011c2235239fafa2bf0deccef5a.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="NULL's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Fiddler获取iOS应用旧版本安装包
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-02-25 20:26:00" itemprop="dateCreated datePublished" datetime="2019-02-25T20:26:00+08:00">2019-02-25</time>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/实用教程/" itemprop="url" rel="index"><span itemprop="name">实用教程</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>之前想着用<code>thor</code>抓旧版本的<code>ipa</code>，然而发现手机是无法实现的。再加上在用的追书神器企业版的证书失效了，就想着还是安装个老版本吧，所以最后还是用<code>fiddler</code>抓<code>iTtunes</code>的数据。</p>
+<p>在这过程中，感受就是电脑操作真的方便…<code>Thor</code>设置断点什么的实在太麻烦了，而且写过滤器还要找相关的域名和关键字等等。特别是过滤器的断点，<code>Thor</code>的断点其实是断点加操作（比如替换插入等等）两步结合到了一起，它类似一个脚本，运行的过程是，碰到设定需要断点的信息体之后断点然后自动执行替换等操作，是全自动的。这当然是好，但是也就有了一定的门槛，不是谁拿到手就可以写一个设置好了断点的过滤器出来。然而<code>Fiddler</code>非常好操作，不需要什么专业知识，只是需要解密抓到的包，然后手动替换就行了，使用简单就是<code>Fiddler</code>的特点。</p>
+<p>这两个不同平台的抓包工具都非常强大，<code>Thor</code>就稍微难使用一些，但是可以使用别人的过滤器只需要打开软件即可（价格也贵，软件就是68）。<code>Fiddler</code>是免费的抓包工具，反正在<code>windows</code><br>是完全免费的…然后使用很简单，功能也很多，都差不多，只要能抓包就行了…</p>
+<blockquote>
+<p>文章最后是演示视频….</p>
+</blockquote>
+<a id="more"></a>
+<h2 id="准备软件"><a href="#准备软件" class="headerlink" title="准备软件"></a>准备软件</h2><p><code>Fiddler</code> <code>iTunes</code><br>Fiddler直接去官网下载即可，而iTunes需要下载版本号在12.6.5.3以下（包括它），下图是爱思助手里面的。</p>
+<p><img src="https://i.loli.net/2019/02/25/5c73df49d063e.png" alt="1"></p>
+<hr>
+<h2 id="Fiddler相关设置"><a href="#Fiddler相关设置" class="headerlink" title="Fiddler相关设置"></a>Fiddler相关设置</h2><p>这里主要是设置<code>Fiddler</code>对<code>Https</code>的支持，有一个坑点是设置好之后可能会出现系统所有<code>SSL证书</code>失效的情况，这个时候的解决办法是先删除所有Fiddler生成的SSL证书，然后重新安装这些证书。</p>
+<p>具体路径：<code>Fiddler --&gt; Tools --&gt; Options --&gt; Https</code></p>
+<p><img src="https://i.loli.net/2019/02/25/5c73dead4c77f.png" alt="2"></p>
+<p>开启上图设置，第一次打开的时候会提示安装证书的，如果不提示就手动安装<br>点击<code>Actions --&gt; Trust Root Certificate</code>即可。</p>
+<hr>
+<h2 id="获取版本号信息"><a href="#获取版本号信息" class="headerlink" title="获取版本号信息"></a>获取版本号信息</h2><blockquote>
+<p>仅仅是为了抓到版本信息，如果有了自己想下载软件的版本号直接进行下一步就好了。</p>
+</blockquote>
+<p>1.首先打开<code>iTnues</code>并登录<code>Apple账户</code><br>2.然后在iTnues的App Store里面搜索应用名（以QQ为例）</p>
+<p><img src="https://i.loli.net/2019/02/25/5c73e082936d3.png" alt="3"></p>
+<hr>
+<p>3.再打开Fiddler，并且设置断点：<code>bpu MZBuy.woa</code></p>
+<p><img src="https://i.loli.net/2019/02/25/5c73e0e2d9e09.png" alt="4"></p>
+<hr>
+<p>4.然后返回iTunes点击下载QQ，这里因为已经设置了断点，所以点击下载是不会有反应的。然后返回Fiddler找到抓到的包，并且点击<code>Run To Completion</code></p>
+<p><img src="https://i.loli.net/2019/02/25/5c73e19dcbd2a.png" alt="5"></p>
+<blockquote>
+<p>那个红色的就是在iTunes里点击下载之后抓到的包，因为设置了断点所以它卡在那里了，点击运行完成之后才会正常响应。其实不设置断点也可以…只要能从那么多数据包中找到那一个…</p>
+</blockquote>
+<hr>
+<p>5.对抓到的包进行解密操作</p>
+<p><img src="https://i.loli.net/2019/02/25/5c73e35c66d3d.png" alt="6"></p>
+<blockquote>
+<p>因为https传输是加密的，如果不解密，我们抓到的数据包是没用的，因此需要解密，按图上的操作就行了。</p>
+</blockquote>
+<hr>
+<p>6.找到自己想要安装的版本号</p>
+<p><img src="https://i.loli.net/2019/02/25/5c73e362bb78b.png" alt="7"></p>
+<blockquote>
+<p>解密之后要找到版本号，已经解密的数据包可以保存下来（xml文件），当然也可以直接在Fiddler的界面查看，就比如图上。至于这些数字对应哪个版本…嗯嗯…这个我也不知道…因此，只能一个个尝试了，还好iTunes在下载完之后会有版本号。</p>
+</blockquote>
+<hr>
+<h2 id="下载旧版本"><a href="#下载旧版本" class="headerlink" title="下载旧版本"></a>下载旧版本</h2><p>7.重新打开iTunes并且下载旧版本（以追书神器为例）<br>和前面的操作一样，先搜索APP，然后打开Fiddler设置断点…<br>值得一提的是，这里设置断点和前面是不一样的，前面说那么多其实只是为了抓到数据包从而获取到版本号，如果提前知道了版本号可以直接进行这一步，也就是设置断点然后修改响应信息。</p>
+<p><img src="https://i.loli.net/2019/02/25/5c73e6535f1d7.png" alt="8"></p>
+<p><img src="https://i.loli.net/2019/02/25/5c73e6652324b.png" alt="9"></p>
+<p>8.安装ipa….可以用某某助手，用自己AppleID抓的ipa包，安装时没有问题的。</p>
+<hr>
+<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>折腾了两天，本来是想学习一下Thor的过滤器制作，但是无奈断点那块有点儿难，我又这么懒，所以就没弄Thor了，不过我拆了很多包看了一下他们的写法，总的来说那些传出来的过滤器实际上都只是设置断点然后修改响应信息体回传….也就是自慰作用而已…名字写的吓人，实际上可用的也不多，而Thor也不是万能的。</p>
+<p>Fiddler是一个很好的软件，只是我现在不知道怎么连接手机使用，可以的话Fiddler肯定是比Thor好用的，因为电脑操作方便。而Thor还是胜在过滤器那方面，写好断点之后可以直接抓包打开网站APP什么的，程序会自动断点并且修改信息，只是设置断点还是有点难…</p>
+<blockquote>
+<p>清理腾讯云COS的时候不小心把视频删了，有时间再录制…</p>
+</blockquote>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/iOS/" rel="tag"># iOS</a>
+          
+            <a href="/tags/ipa/" rel="tag"># ipa</a>
+          
+            <a href="/tags/Fiddler/" rel="tag"># Fiddler</a>
+          
+            <a href="/tags/抓包/" rel="tag"># 抓包</a>
+          
+            <a href="/tags/iOS软件降级安装/" rel="tag"># iOS软件降级安装</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/thor1/" rel="next" title="iOS神器Thor的初次使用">
+                <i class="fa fa-chevron-left"></i> iOS神器Thor的初次使用
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/PAT-Basic-Level-Practice/" rel="prev" title="PAT (Basic Level) Practice">
+                PAT (Basic Level) Practice <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="https://nullptr-1252418998.cos.ap-shanghai.myqcloud.com/blog/e48952d599dbf011c2235239fafa2bf0deccef5a.jpg" alt="John Doe">
+            
+              <p class="site-author-name" itemprop="name">John Doe</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">16</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">23</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.dreamwings.cn/" title="https://www.dreamwings.cn/" rel="noopener" target="_blank">千千</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.zgcwkj.top/" title="https://blog.zgcwkj.top/" rel="noopener" target="_blank">zgcwkj</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.ninaner.com/" title="https://www.ninaner.com/" rel="noopener" target="_blank">半夏小栈</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://maxiaohong.top/" title="http://maxiaohong.top/" rel="noopener" target="_blank">中二小学长</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.lovexint.com/" title="https://www.lovexint.com/" rel="noopener" target="_blank">洛小依's Blog</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://azturbo.ml/" title="https://azturbo.ml/" rel="noopener" target="_blank">元芳的小本本</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.happysec.cn/" title="https://www.happysec.cn/" rel="noopener" target="_blank">小北's Blog</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.wumiantu.com/" title="https://www.wumiantu.com/" rel="noopener" target="_blank">撩人的无眠兔</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.xiaojun.org/" title="https://www.xiaojun.org/" rel="noopener" target="_blank">钧言博客</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.tuwary.cn/" title="https://www.tuwary.cn/" rel="noopener" target="_blank">英雄大人</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.oosrc.com/" title="https://blog.oosrc.com/" rel="noopener" target="_blank">夏虫语冰</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.mlbeta.com/" title="https://www.mlbeta.com/" rel="noopener" target="_blank">武汉抢房</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#准备软件"><span class="nav-number">1.</span> <span class="nav-text">准备软件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Fiddler相关设置"><span class="nav-number">2.</span> <span class="nav-text">Fiddler相关设置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#获取版本号信息"><span class="nav-number">3.</span> <span class="nav-text">获取版本号信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#下载旧版本"><span class="nav-number">4.</span> <span class="nav-text">下载旧版本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#后记"><span class="nav-number">5.</span> <span class="nav-text">后记</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">  <a href="http://www.beian.miit.gov.cn" rel="noopener" target="_blank">湘ICP备18013548号 </a>&copy; 2018 – <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.1.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.1"></script>
+
+  <script src="/js/motion.js?v=7.1.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.1.1"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.1.1"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.1"></script>
+<script src="/js/post-details.js?v=7.1.1"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.1"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

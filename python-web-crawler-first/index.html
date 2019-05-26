@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.1.1',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: true,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="前言网络爬虫（又被称为网页蜘蛛，网络机器人，在FOAF社区中间，更经常的称为网页追逐者），是一种按照一定的规则，自动地抓取万维网信息的程序或者脚本。另外一些不常使用的名字还有蚂蚁、自动索引、模拟程序或者蠕虫。 如今Python这门语言越来越火，在外面看到的培训机构都有“Python爬虫”、“Python人工智能”这种招牌。而我们学校没有开设Python这一门课程，因此我学习Python仅仅是个人兴">
+<meta name="keywords" content="python,爬虫">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第一个Python爬虫">
+<meta property="og:url" content="http://yoursite.com/python-web-crawler-first/index.html">
+<meta property="og:site_name" content="NULL&#39;s Blog">
+<meta property="og:description" content="前言网络爬虫（又被称为网页蜘蛛，网络机器人，在FOAF社区中间，更经常的称为网页追逐者），是一种按照一定的规则，自动地抓取万维网信息的程序或者脚本。另外一些不常使用的名字还有蚂蚁、自动索引、模拟程序或者蠕虫。 如今Python这门语言越来越火，在外面看到的培训机构都有“Python爬虫”、“Python人工智能”这种招牌。而我们学校没有开设Python这一门课程，因此我学习Python仅仅是个人兴">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://nullptr-1252418998.cos.ap-shanghai.myqcloud.com/blog/QQ%E6%88%AA%E5%9B%BE20190407190404.png">
+<meta property="og:updated_time" content="2019-04-07T11:50:16.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="第一个Python爬虫">
+<meta name="twitter:description" content="前言网络爬虫（又被称为网页蜘蛛，网络机器人，在FOAF社区中间，更经常的称为网页追逐者），是一种按照一定的规则，自动地抓取万维网信息的程序或者脚本。另外一些不常使用的名字还有蚂蚁、自动索引、模拟程序或者蠕虫。 如今Python这门语言越来越火，在外面看到的培训机构都有“Python爬虫”、“Python人工智能”这种招牌。而我们学校没有开设Python这一门课程，因此我学习Python仅仅是个人兴">
+<meta name="twitter:image" content="https://nullptr-1252418998.cos.ap-shanghai.myqcloud.com/blog/QQ%E6%88%AA%E5%9B%BE20190407190404.png">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="NULL's Blog" type="application/atom+xml">
+
+
+
+  
+  
+  <link rel="canonical" href="http://yoursite.com/python-web-crawler-first/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>第一个Python爬虫 | NULL's Blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">NULL's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/python-web-crawler-first/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://nullptr-1252418998.cos.ap-shanghai.myqcloud.com/blog/e48952d599dbf011c2235239fafa2bf0deccef5a.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="NULL's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">第一个Python爬虫
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-04-06 18:52:53" itemprop="dateCreated datePublished" datetime="2019-04-06T18:52:53+08:00">2019-04-06</time>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Python学习/" itemprop="url" rel="index"><span itemprop="name">Python学习</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p><a href="https://baike.baidu.com/item/%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB/5162711?fr=aladdin" target="_blank" rel="noopener">网络爬虫</a>（又被称为网页蜘蛛，网络机器人，在FOAF社区中间，更经常的称为网页追逐者），是一种按照一定的规则，自动地抓取万维网信息的程序或者脚本。另外一些不常使用的名字还有蚂蚁、自动索引、模拟程序或者蠕虫。</p>
+<p>如今Python这门语言越来越火，在外面看到的培训机构都有“Python爬虫”、“Python人工智能”这种招牌。而我们学校没有开设Python这一门课程，因此我学习Python仅仅是个人兴趣，也算是为以后的工作做一点点的准备吧。由于在此之前我都是用C/C++来做题目的，所以我对于Python的类与对象方面都不是很了解，我大概看了一下文档，有各种各样的由官方封装起来的方法供我们使用，还有很多第三方模块，总的来说对Python的第一印象是语法简单，涉及内容多。同时Python也是我学习的第一门面向对象的语言。希望自己能够好好体会<code>对象</code>的概念。</p>
+<a id="more"></a>
+<h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h2><p>在我们使用各种开发工具的时候，一般会遇到开发环境配置的问题。先说<code>Dev-cpp</code>和<code>Visual Studio 201X</code>这种<code>IDE</code>,它们其实是包括了代码编辑器、编译器、调试器和图形用户界面等工具，所以这种工具的使用也很简单，只需要照常安装就行，然后写一个<code>&quot;Hello World</code>程序就成功了。</p>
+<p>其实C/C++的编译器是GCC/G++，而上面所说的工具最核心的功能是调试阶段，可以实现语法高亮，自动提醒语法错误，设置断点等等功能。而编译的阶段其实是调用它自带的GCC/G++程序，于是一直到这里也没有涉及到开发环境的配置，也许很多人一直用Dev-cpp到大学毕业也不会配置一个C语言环境。</p>
+<p>还是略过这一块比较好，只需要知道我们用<code>Visual Studio Code</code>来写一个C/C++程序是需要自己配置开发环境的。</p>
+<p>在没有配置Python开发环境的前提下我们用记事本直接写一个<code>print(&quot;Hello World&quot;)</code>是无法执行的。其实Python的环境配置很简单（配置开发环境本就是一件很容易的事情），我们直接去<a href="https://www.python.org/" target="_blank" rel="noopener">官网</a>下载Windows的可执行程序就行了，在安装阶段就有添加<code>Python</code>到系统的<code>PATH</code>这一个选项，我们安装好之后就可以开心的使用Python了。打开<code>cmd</code>输入<code>python</code>就可以看到我们的python版本信息：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Python 3.7.3 (v3.7.3:ef4ec6ed12, Mar 25 2019, 21:26:53) [MSC v.1916 32 bit (Intel)] on win32</span><br></pre></td></tr></table></figure>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>写一个Python爬虫不是一件很难的事情。短短几十行代码就可以做到一个抓取某网站所有图片的功能，相比用C/C++刷题来说这个显得更有趣一些。于是打开了<code>Visual Studio Code</code>新建了一个文件<code>test.py</code></p>
+<p>首先我们要知道python爬虫是一个什么原理。简要的说便是<code>一段程序自动打开一个网站，然后在网站上寻找自己需要的信息，最后把这些获取到的信息保存起来</code>，因此我们知道了大概的步骤，一个简单的爬虫就只需要三步就可以完成爬取工作。</p>
+<h3 id="打开网页"><a href="#打开网页" class="headerlink" title="打开网页"></a>打开网页</h3><p>在官方文档中我们可以找到一个叫做<code>urllib</code>的模块，利用这个模块我们就可以写出一个简单的爬虫程序。但是，我们可以用到一个更加方便的Python的第三方模块<code>requests</code></p>
+<blockquote>
+<p>requests 是⽤Python语⾔编写，基于urllib，采⽤Apache2 Licensed开源协议的 HTTP 库。它⽐ urllib 更加⽅便，可以节约我们⼤量的⼯作，完全满⾜HTTP测试需求。</p>
+</blockquote>
+<p>相对而言人类总是喜欢简洁的，对比一下两者打开一个网页的语句就可以发现<code>requests</code>简洁优势。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">response1 = requests.get(url = Weburl, headers = WebHead)</span><br><span class="line">response2 = urllib.request.urlopen(url = WebUrl, headers = WebHead)</span><br></pre></td></tr></table></figure>
+<p>下面具体说一下如何使用<code>requests.get()</code>方法打开一个网站(以抓取百度贴吧精品图片为例)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">WebUrl = <span class="string">"https://tieba.baidu.com/f?kw=%E5%A3%81%E7%BA%B8&amp;ie=utf-8&amp;tab=good"</span></span><br><span class="line">WebHead = &#123;</span><br><span class="line">    <span class="string">'User-Agent'</span>:<span class="string">'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'</span>,</span><br><span class="line">    <span class="string">'Referer'</span>:<span class="string">'https://tieba.baidu.com'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">response = requests.get(url = WebUrl, headers = WebHead)</span><br></pre></td></tr></table></figure>
+<p>在第一行我们需要导入<code>requests</code>模块，然后定义一下<code>WbeUrl</code>也就是我们需要爬虫去的网址。<br>然后需要了解一点是我们打开一个网站时会有相关信息集合在数据传输的头部<code>Headers</code>传给云端服务器校验。所以我们定义了一个<code>WebHead</code>来应对各种情况。有什么情况呢？就比如某些网站不允许爬虫进入，我们要做的就是修改上传的头部信息。</p>
+<p><code>requests.get()</code>方法很轻松的做到了这一点，只需要在方法内部加入参数<code>headers</code>即可。<br><code>User-Agent</code>作用是服务器能够识别客户使用的操作系统及版本、CPU 类型、浏览器及版本、浏览器渲染引擎、浏览器语言、浏览器插件等。<br><code>Referer</code>作用呢是告诉服务器我是从哪个页面链接过来的，服务器基此可以获得一些信息用于处理。</p>
+<p>到这里运行这一段代码是没有什么问题的。那么我们运行之后得到了什么呢？<br>可以通过<code>print(response.text)</code>来查看，可以看到许多许多排版乱糟糟的<code>HTML5/CSS3/JAVASCRIPT</code>语句，也就是说text信息也就是网站的源码。</p>
+<h3 id="处理信息"><a href="#处理信息" class="headerlink" title="处理信息"></a>处理信息</h3><p>用<code>requests.get()</code>方法打开网站之后总不能不干事情，这里我选择用<code>BeautifulSoup</code>库来做下一步操作。本来一般来说写一个爬虫是需要用到正则表达式的，但是我太懒了太笨了，我选择<code>BeautifulSoup</code></p>
+<blockquote>
+<p><a href="https://www.crummy.com/software/BeautifulSoup/bs4/doc/index.zh.html" target="_blank" rel="noopener">Beautiful Soup</a> 是一个可以从HTML或XML文件中提取数据的Python库，它能够通过你喜欢的转换器实现惯用的文档导航，查找，修改文档的方式。Beautiful Soup会帮你节省数小时甚至数天的工作时间。</p>
+</blockquote>
+<p><code>BeautifulSoup</code>文档里面很清楚的讲了安装以及使用，所以我们开开心心的用就得了。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"></span><br><span class="line">WebUrl = <span class="string">"https://tieba.baidu.com/f?kw=%E5%A3%81%E7%BA%B8&amp;ie=utf-8&amp;tab=good"</span></span><br><span class="line">WebHead = &#123;</span><br><span class="line">    <span class="string">'User-Agent'</span>:<span class="string">'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'</span>,</span><br><span class="line">    <span class="string">'Referer'</span>:<span class="string">'https://tieba.baidu.com'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">response = requests.get(url = WebUrl, headers = WebHead)</span><br><span class="line">soup = BeautifulSoup(response.text, <span class="string">'html.parser'</span>)</span><br></pre></td></tr></table></figure>
+<p>通过<code>bs4</code>模块导入了<code>BeautifulSoup</code>，然后用<code>soup</code>变量存储<code>BeautifulSoup</code>以<code>html.parser</code>方法处理<code>response.text</code>之后得到的信息。这就是处理信息的过程，一行代码就可以了。</p>
+<h3 id="获取信息"><a href="#获取信息" class="headerlink" title="获取信息"></a>获取信息</h3><p>我们手动打开网址<a href="https://tieba.baidu.com/f?kw=%E5%A3%81%E7%BA%B8&amp;ie=utf-8&amp;tab=good" target="_blank" rel="noopener">百度贴吧精品贴纸</a>可以看到的是很多很多的帖子，事实上我们的爬虫在上一步也就进行到了这一步，很明显，我们是需要抓取图片而不是在这个界面停留，而图片在每一个帖子里面，那么我们可以点击第一个帖子进入即可，但是爬虫不会自动点击进入，所以我们需要处理信息得到每一个帖子的<code>URL</code></p>
+<p>这里我们需要审查网页元素，也就是检查网页的源代码。找帖子的<code>URL</code>不就是找对应的<code>a</code>标签嘛？</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">"thread_list"</span> <span class="attr">class</span>=<span class="string">"threadlist_bright j_threadlist_bright"</span>&gt;</span></span><br><span class="line">    ···</span><br><span class="line">    ···</span><br><span class="line">    ···</span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>经过审查元素我们可以发现所有帖子都在这个列表里面，很显然我们要做的就是用<code>find()</code>方法找到这一个<code>ul</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"></span><br><span class="line">WebUrl = <span class="string">"https://tieba.baidu.com/f?kw=%E5%A3%81%E7%BA%B8&amp;ie=utf-8&amp;tab=good"</span></span><br><span class="line">WebHead = &#123;</span><br><span class="line">    <span class="string">'User-Agent'</span>:<span class="string">'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'</span>,</span><br><span class="line">    <span class="string">'Referer'</span>:<span class="string">'https://tieba.baidu.com'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">response = requests.get(url = WebUrl, headers = WebHead)</span><br><span class="line">soup = BeautifulSoup(response.text, <span class="string">'html.parser'</span>)</span><br><span class="line">a_list = soup.find(<span class="string">'ul'</span>, id=<span class="string">'thread_list'</span>).find_all(<span class="string">'a'</span>, class_=<span class="string">'j_th_tit'</span>)</span><br></pre></td></tr></table></figure>
+<p>这里我们又添加了一个语句。前面得到的<code>soup</code>变量是经过处理的<code>BeautifulSoup</code>对象呀，所有我们可以用<code>find()</code>方法来获取信息了。用<code>BeautifulSoup</code>就省去了写正则表达式的麻烦，可以看到find()方法里面是两个参数<code>&#39;ul&#39;</code>和<code>id=&#39;thread_list&#39;</code>。也就是从text中找到一个id是thread_list的列表，但是找到了列表还没完。</p>
+<p>我们需要的是帖子的链接而不是这个列表，我们用浏览器继续审查元素。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"threadlist_title pull_left j_th_tit "</span>&gt;</span> </span><br><span class="line">    <span class="tag">&lt;<span class="name">a</span> <span class="attr">rel</span>=<span class="string">"noreferrer"</span> <span class="attr">href</span>=<span class="string">"/p/4803144798"</span> <span class="attr">title</span>=<span class="string">"【壁纸】高清大图✨"</span> <span class="attr">target</span>=<span class="string">"_blank"</span> <span class="attr">class</span>=<span class="string">"j_th_tit "</span>&gt;</span>【壁纸】高清大图✨<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>可以发现，这个div里面的a标签不就是我们需要的嘛？对比其他帖子的链接，可以发现这些a标签都有同一个class，因此我们把这些a标签全部保存起来不就好了嘛？于是就有了<code>find_all()</code>方法，和前面的<code>find()</code>方法同理，加入对应的参数就可以了。当然，我们只是找到了而已，还需要保存起来，那么就用一个列表接受就好了。<br>用<code>print(a_list)</code>（错误用法，列表的输出不是这样子写）可以得到如下信息：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">"j_th_tit"</span> <span class="attr">href</span>=<span class="string">"/p/4803144798"</span> <span class="attr">rel</span>=<span class="string">"noreferrer"</span> <span class="attr">target</span>=<span class="string">"_blank"</span> <span class="attr">title</span>=<span class="string">"【壁纸】高清大图✨"</span>&gt;</span>【壁纸】高清大图✨<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">    ···</span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">"j_th_tit"</span> <span class="attr">href</span>=<span class="string">"/p/4645322258"</span> <span class="attr">rel</span>=<span class="string">"noreferrer"</span> <span class="attr">target</span>=<span class="string">"_blank"</span> <span class="attr">title</span>=<span class="string">"【壁纸】分享壁纸💗"</span>&gt;</span>【壁纸】分享壁纸💗<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">    ···</span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">"j_th_tit"</span> <span class="attr">href</span>=<span class="string">"/p/4079735446"</span> <span class="attr">rel</span>=<span class="string">"noreferrer"</span> <span class="attr">target</span>=<span class="string">"_blank"</span> <span class="attr">title</span>=<span class="string">"【壁纸】少女の心"</span>&gt;</span>【壁纸】少女の心<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">"j_th_tit"</span> <span class="attr">href</span>=<span class="string">"/p/4198993236"</span> <span class="attr">rel</span>=<span class="string">"noreferrer"</span> <span class="attr">target</span>=<span class="string">"_blank"</span> <span class="attr">title</span>=<span class="string">"【壁纸】天晴"</span>&gt;</span>【壁纸】天晴<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>可以看到<code>a_list</code>这个列表存储的是这些信息，但是还没完，我要a标签干嘛，不就是为了得到帖子的链接嘛？我只需要<code>href</code>的信息。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">post_url_list = []</span><br><span class="line"><span class="keyword">for</span> a <span class="keyword">in</span> a_list:</span><br><span class="line">    a[<span class="string">'href'</span>] = <span class="string">"https://tieba.baidu.com"</span> + a[<span class="string">'href'</span>]</span><br><span class="line">    post_url_list.append(a[<span class="string">'href'</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment">#输出帖子的链接检查是否正确无误</span></span><br><span class="line"><span class="keyword">for</span> url <span class="keyword">in</span> post_url_list:</span><br><span class="line">    print(url)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><code>a</code>标签里面的<code>href</code>里面是不全完整的链接，所以补全了再插入到<code>post_url_list</code>里面。</p>
+</blockquote>
+<p>可以看输出信息：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">https://tieba.baidu.com/p/4847606272</span><br><span class="line">https://tieba.baidu.com/p/4645322258</span><br><span class="line">https://tieba.baidu.com/p/4492902168</span><br><span class="line">https://tieba.baidu.com/p/3446797781</span><br><span class="line">https://tieba.baidu.com/p/4378860308</span><br><span class="line">https://tieba.baidu.com/p/4364768066</span><br><span class="line">https://tieba.baidu.com/p/4328735082</span><br><span class="line">https://tieba.baidu.com/p/4357276836</span><br><span class="line">https://tieba.baidu.com/p/4079735446</span><br><span class="line">···</span><br></pre></td></tr></table></figure>
+<p>于是我们得到了当前页面所有帖子的链接，接下来就是进入每一个帖子（跌倒实现），到目前为止的完整代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"></span><br><span class="line">WebUrl = <span class="string">"https://tieba.baidu.com/f?kw=%E5%A3%81%E7%BA%B8&amp;ie=utf-8&amp;tab=good"</span></span><br><span class="line"></span><br><span class="line">WebHead = &#123;</span><br><span class="line">    <span class="string">'User-Agent'</span>: <span class="string">'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'</span>,</span><br><span class="line">    <span class="string">'Referer'</span>: <span class="string">'https://tieba.baidu.com'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">response = requests.get(url = WebUrl, headers = WebHead)</span><br><span class="line">soup = BeautifulSoup(response.text, <span class="string">'html.parser'</span>)</span><br><span class="line">a_list = soup.find(<span class="string">'ul'</span>, id=<span class="string">'thread_list'</span>).find_all(<span class="string">'a'</span>, class_=<span class="string">'j_th_tit'</span>)</span><br><span class="line"></span><br><span class="line">post_url_list = []</span><br><span class="line"><span class="keyword">for</span> a <span class="keyword">in</span> a_list:</span><br><span class="line">    a[<span class="string">'href'</span>] = <span class="string">"https://tieba.baidu.com"</span> + a[<span class="string">'href'</span>]</span><br><span class="line">    post_url_list.append(a[<span class="string">'href'</span>])</span><br></pre></td></tr></table></figure>
+<h3 id="抓取目标"><a href="#抓取目标" class="headerlink" title="抓取目标"></a>抓取目标</h3><p>有了帖子的链接就好办了，我们只要进入每一个帖子，然后在里面寻找图片最后保存就好了呀。<br>有这么多链接在一个列表里面了，我们首先是需要迭代每一个帖子链接。我们人工操作，手动点入了一个帖子。看了看有很多人回帖，留住也放了很多图片，水贴的不少，酸酸怪也有，这里有各种各样的信息，我们需要的只是图片，我们审查元素。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"BDE_Image"</span> <span class="attr">src</span>=<span class="string">"https://imgsa.baidu.com/forum/w%3D580/sign=7a1e5400e8fe9925cb0c695804a95ee4/c9034c086e061d954a4c7bfd73f40ad163d9caeb.jpg"</span> <span class="attr">size</span>=<span class="string">"62546"</span> <span class="attr">width</span>=<span class="string">"506"</span> <span class="attr">height</span>=<span class="string">"900"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>右键图片审查元素就可以看到这个<code>img</code>标签。我们最后不就是需要这个<code>src</code>里面的链接吗？<br>刚才是人工做的，现在换成爬虫。爬虫进入第一个帖子的样子不是像极了爬虫第一次进入主页面的时候？所以操作很简答，和上面一样用<code>requests.get</code>方法打开帖子链接，然后用<code>BeautifulSoup</code>处理信息，然后用<code>find()</code>方法筛选信息…代码就是这样子了</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> PostUrl <span class="keyword">in</span> post_url_list:</span><br><span class="line">    response_post = requests.get(url = PostUrl, headers = WebHead)</span><br><span class="line">    soup_post = BeautifulSoup(response_post.text, <span class="string">'html.parser'</span>)</span><br><span class="line">    img_url_list = soup_post.find_all(<span class="string">'img'</span>, class_ = <span class="string">'BDE_Image'</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment">#输出图片的链接</span></span><br><span class="line">    <span class="keyword">for</span> ImgUrl <span class="keyword">in</span> img_url_list:</span><br><span class="line">        print(ImgUrl[<span class="string">'src'</span>])</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">···</span><br><span class="line">https://imgsa.baidu.com/forum/w%3D580/sign=6b419e4e8d82b9013dadc33b438ca97e/e537e5dde71190efd27b27b6c91b9d16fcfa60dd.jpg</span><br><span class="line">https://imgsa.baidu.com/forum/w%3D580/sign=9aef0b8db41c8701d6b6b2ee177e9e6e/4df7e0fe9925bc31e8fcb4f159df8db1cb13703c.jpg</span><br><span class="line">https://imgsa.baidu.com/forum/w%3D580/sign=10361301d609b3deebbfe460fcbe6cd3/ea11632762d0f703d7f721b50ffa513d2697c510.jpg</span><br><span class="line">https://imgsa.baidu.com/forum/w%3D580/sign=80ee8d6a8044ebf86d716437e9f8d736/b43d8794a4c27d1e39958fad1cd5ad6eddc4382e.jpg</span><br><span class="line">···</span><br></pre></td></tr></table></figure>
+<p>好了，我们得到了终极目标，接下来只需要保存图片就行了。后面也就是迭代了，保存和切换路径都有固定的写法。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests, os</span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"></span><br><span class="line">WebUrl = <span class="string">"https://tieba.baidu.com/f?kw=%E5%A3%81%E7%BA%B8&amp;ie=utf-8&amp;tab=good"</span></span><br><span class="line"></span><br><span class="line">WebHead = &#123;</span><br><span class="line">    <span class="string">'User-Agent'</span>: <span class="string">'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'</span>,</span><br><span class="line">    <span class="string">'Referer'</span>: <span class="string">'https://tieba.baidu.com'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">response = requests.get(url = WebUrl, headers = WebHead)</span><br><span class="line">soup = BeautifulSoup(response.text, <span class="string">'html.parser'</span>)</span><br><span class="line">a_list = soup.find(<span class="string">'ul'</span>, id=<span class="string">'thread_list'</span>).find_all(<span class="string">'a'</span>, class_=<span class="string">'j_th_tit'</span>)</span><br><span class="line"></span><br><span class="line">post_url_list = []</span><br><span class="line"><span class="keyword">for</span> a <span class="keyword">in</span> a_list:</span><br><span class="line">    <span class="keyword">if</span> a[<span class="string">'href'</span>] <span class="keyword">not</span> <span class="keyword">in</span> post_url_list:</span><br><span class="line">        a[<span class="string">'href'</span>] = <span class="string">"https://tieba.baidu.com"</span> + a[<span class="string">'href'</span>]</span><br><span class="line">        post_url_list.append(a[<span class="string">'href'</span>])</span><br><span class="line"></span><br><span class="line">path = <span class="string">'E:/贴吧精品壁纸/'</span></span><br><span class="line">os.chdir(path)</span><br><span class="line">j = <span class="number">1</span></span><br><span class="line"><span class="keyword">for</span> PostUrl <span class="keyword">in</span> post_url_list:</span><br><span class="line">    response_post = requests.get(url = PostUrl, headers = WebHead)</span><br><span class="line">    soup_post = BeautifulSoup(response_post.text, <span class="string">'html.parser'</span>)</span><br><span class="line">    img_url_list = soup_post.find_all(<span class="string">'img'</span>, class_ = <span class="string">'BDE_Image'</span>)</span><br><span class="line"></span><br><span class="line">    ImgUrl_list = []</span><br><span class="line">    <span class="keyword">for</span> url <span class="keyword">in</span> img_url_list:</span><br><span class="line">        ImgUrl_list.append(url[<span class="string">'src'</span>])</span><br><span class="line"></span><br><span class="line">    i = <span class="number">1</span></span><br><span class="line">    <span class="keyword">for</span> ImgUrl <span class="keyword">in</span> ImgUrl_list:</span><br><span class="line">        print(<span class="string">"正在保存: "</span> + ImgUrl)</span><br><span class="line">        img_save = requests.get(ImgUrl, headers = WebHead)</span><br><span class="line">        <span class="keyword">with</span> open(<span class="string">"第"</span> + str(i) + <span class="string">"个帖子"</span> + <span class="string">"第"</span> + str(j) + <span class="string">"张图片"</span> +<span class="string">'.jpg'</span>, <span class="string">'wb'</span>) <span class="keyword">as</span> f:</span><br><span class="line">            f.write(img_save.content)</span><br><span class="line">        f.close()</span><br><span class="line">        i += <span class="number">1</span></span><br><span class="line">    j += <span class="number">1</span></span><br></pre></td></tr></table></figure>
+<p>自此，所有代码都写完了。运行以上代码的前提是需要安装好第三方模块以及E盘有一个文件夹“贴吧精品壁纸”。一个很简单的爬虫就这样子完成了，它会爬WebUrl界面所有帖子里面的所有图片资源，当然，速度并不是很快，完全可以多加优化。运行完不出意外应该有一千多张图片，中途理论上是不会中断的。具体的效果如图：<br><img src="https://nullptr-1252418998.cos.ap-shanghai.myqcloud.com/blog/QQ%E6%88%AA%E5%9B%BE20190407190404.png" alt="test"></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>感觉很有趣，看着自己写的代码成功的把图片一张张扒下来感觉很有成就感。虽然只是一个很简单的项目，还是让我感觉对python更加理解了一些，相比于阅读枯燥的官方文档，我更喜欢参考别人的项目代码来学习各种模块方法的使用。python大概就告一段落了，爬虫这块会继续学习下去，但是系统的学习python恐怕是没有必要了，我平时刷题都是用C/C++，python给我的帮助真的不是很大，只是玩一玩还好啦。人生苦短，我用python！加油。</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/python/" rel="tag"># python</a>
+          
+            <a href="/tags/爬虫/" rel="tag"># 爬虫</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Sudoku-Killer/" rel="next" title="Sudoku Killer">
+                <i class="fa fa-chevron-left"></i> Sudoku Killer
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/python-wordcloud/" rel="prev" title="用python生成词云">
+                用python生成词云 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="https://nullptr-1252418998.cos.ap-shanghai.myqcloud.com/blog/e48952d599dbf011c2235239fafa2bf0deccef5a.jpg" alt="John Doe">
+            
+              <p class="site-author-name" itemprop="name">John Doe</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">16</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">23</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.dreamwings.cn/" title="https://www.dreamwings.cn/" rel="noopener" target="_blank">千千</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.zgcwkj.top/" title="https://blog.zgcwkj.top/" rel="noopener" target="_blank">zgcwkj</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.ninaner.com/" title="https://www.ninaner.com/" rel="noopener" target="_blank">半夏小栈</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://maxiaohong.top/" title="http://maxiaohong.top/" rel="noopener" target="_blank">中二小学长</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.lovexint.com/" title="https://www.lovexint.com/" rel="noopener" target="_blank">洛小依's Blog</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://azturbo.ml/" title="https://azturbo.ml/" rel="noopener" target="_blank">元芳的小本本</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.happysec.cn/" title="https://www.happysec.cn/" rel="noopener" target="_blank">小北's Blog</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.wumiantu.com/" title="https://www.wumiantu.com/" rel="noopener" target="_blank">撩人的无眠兔</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.xiaojun.org/" title="https://www.xiaojun.org/" rel="noopener" target="_blank">钧言博客</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.tuwary.cn/" title="https://www.tuwary.cn/" rel="noopener" target="_blank">英雄大人</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.oosrc.com/" title="https://blog.oosrc.com/" rel="noopener" target="_blank">夏虫语冰</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.mlbeta.com/" title="https://www.mlbeta.com/" rel="noopener" target="_blank">武汉抢房</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#准备"><span class="nav-number">2.</span> <span class="nav-text">准备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#正文"><span class="nav-number">3.</span> <span class="nav-text">正文</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#打开网页"><span class="nav-number">3.1.</span> <span class="nav-text">打开网页</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#处理信息"><span class="nav-number">3.2.</span> <span class="nav-text">处理信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取信息"><span class="nav-number">3.3.</span> <span class="nav-text">获取信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#抓取目标"><span class="nav-number">3.4.</span> <span class="nav-text">抓取目标</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">  <a href="http://www.beian.miit.gov.cn" rel="noopener" target="_blank">湘ICP备18013548号 </a>&copy; 2018 – <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.1.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.1"></script>
+
+  <script src="/js/motion.js?v=7.1.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.1.1"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.1.1"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.1"></script>
+<script src="/js/post-details.js?v=7.1.1"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.1"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

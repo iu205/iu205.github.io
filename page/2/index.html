@@ -1,0 +1,1734 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.1.1',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: true,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta property="og:type" content="website">
+<meta property="og:title" content="NULL&#39;s Blog">
+<meta property="og:url" content="http://yoursite.com/page/2/index.html">
+<meta property="og:site_name" content="NULL&#39;s Blog">
+<meta property="og:locale" content="zh-CN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="NULL&#39;s Blog">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="NULL's Blog" type="application/atom+xml">
+
+
+
+  
+  
+  <link rel="canonical" href="http://yoursite.com/page/2/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>NULL's Blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left 
+  page-home">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">NULL's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+  <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/PAT-Basic-Level-Practice/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://nullptr-1252418998.cos.ap-shanghai.myqcloud.com/blog/e48952d599dbf011c2235239fafa2bf0deccef5a.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="NULL's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/PAT-Basic-Level-Practice/" class="post-title-link" itemprop="url">PAT (Basic Level) Practice</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-03-18 17:31:00" itemprop="dateCreated datePublished" datetime="2019-03-18T17:31:00+08:00">2019-03-18</time>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/学习笔记/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>2019年3月30日，四十题打卡，此篇文章可能因为字数太多编辑器变得很卡很卡，所以我打算重新写一篇文章记后面的题目。再说一下最近的感受，题目难度确确实实不大，不过我的速度也太慢了，转眼快半个月了，我还做了不到一半，可见自己的底子有多差。这几天也改了一下自己写代码的习惯，所谓代码规范…感觉一个人一个规范，这还真不好说。</p>
+<p>2019年3月23日，周六，雨天。完成了第三个十题，越到后面越来越复杂，现在还没有到一半，我感觉照这个速度我可能要做一个月，我大概了解了一下其他人的速度，最多最多也就半个月吧…明天就是蓝桥杯了，我这个都没有刷完，有点惭愧。题目的难度不算太难，不比之前做的算法题，这些题目都有固定的思路，只是代码比较繁琐，还有很多坑点。</p>
+<p>2019年3月21日，真好，今天是春分。又做了十道题，最近生活及其不规律，十八号晚上和同学通宵去打游戏了，所以十九号睡了一天（还好那天没课）。二十号刷了八道题目吧，从晚上八点肝到了十一点半，之后又去水群水到了晚上十二点多，我估计我睡着应该快一点了，早上六点五十三的闹钟，实在起不来…还是说昨天做的题目吧，感觉比前面十道题目坑了好多，但是还算是简单的，除了那个大数的除法，我打算找个时间好好学学大数的运算，还有就是这十道题目排序算法偏多。</p>
+<p>2019年3月18日，我觉得还是得刷一点题，这些题目难度不是很大，没有涉及什么算法，都是一些很基础的东西，自己基础本来就不好，所以打算把PAT的乙级题库刷一遍。水平有限，这里的AC代码没有多少参考性，很多题目都是硬着头皮写过去的，到目前为止，对比其他大佬的AC代码唯一的感觉就是自闭…</p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/PAT-Basic-Level-Practice/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/fiddle-ios-ipa/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://nullptr-1252418998.cos.ap-shanghai.myqcloud.com/blog/e48952d599dbf011c2235239fafa2bf0deccef5a.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="NULL's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/fiddle-ios-ipa/" class="post-title-link" itemprop="url">Fiddler获取iOS应用旧版本安装包</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-02-25 20:26:00" itemprop="dateCreated datePublished" datetime="2019-02-25T20:26:00+08:00">2019-02-25</time>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/实用教程/" itemprop="url" rel="index"><span itemprop="name">实用教程</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>之前想着用<code>thor</code>抓旧版本的<code>ipa</code>，然而发现手机是无法实现的。再加上在用的追书神器企业版的证书失效了，就想着还是安装个老版本吧，所以最后还是用<code>fiddler</code>抓<code>iTtunes</code>的数据。</p>
+<p>在这过程中，感受就是电脑操作真的方便…<code>Thor</code>设置断点什么的实在太麻烦了，而且写过滤器还要找相关的域名和关键字等等。特别是过滤器的断点，<code>Thor</code>的断点其实是断点加操作（比如替换插入等等）两步结合到了一起，它类似一个脚本，运行的过程是，碰到设定需要断点的信息体之后断点然后自动执行替换等操作，是全自动的。这当然是好，但是也就有了一定的门槛，不是谁拿到手就可以写一个设置好了断点的过滤器出来。然而<code>Fiddler</code>非常好操作，不需要什么专业知识，只是需要解密抓到的包，然后手动替换就行了，使用简单就是<code>Fiddler</code>的特点。</p>
+<p>这两个不同平台的抓包工具都非常强大，<code>Thor</code>就稍微难使用一些，但是可以使用别人的过滤器只需要打开软件即可（价格也贵，软件就是68）。<code>Fiddler</code>是免费的抓包工具，反正在<code>windows</code><br>是完全免费的…然后使用很简单，功能也很多，都差不多，只要能抓包就行了…</p>
+<blockquote>
+<p>文章最后是演示视频….</p>
+</blockquote>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/fiddle-ios-ipa/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/thor1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://nullptr-1252418998.cos.ap-shanghai.myqcloud.com/blog/e48952d599dbf011c2235239fafa2bf0deccef5a.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="NULL's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/thor1/" class="post-title-link" itemprop="url">iOS神器Thor的初次使用</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-02-23 12:43:00" itemprop="dateCreated datePublished" datetime="2019-02-23T12:43:00+08:00">2019-02-23</time>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/实用教程/" itemprop="url" rel="index"><span itemprop="name">实用教程</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>前两天找ios旧版app的接触到这个软件：<a href="https://github.com/PixelCyber/Thor/blob/master/README-zh-Hans.md" target="_blank" rel="noopener">Thor</a>，恰巧有一个博主有介绍Thor和分享了一些过滤器，看了之后这让我对Thor产生了很大的兴趣，于是就下载了这个软件（其实也是闲的）。</p>
+<p>简单使用了两天，也只是普通的抓包，像我这种从未接触过相关内容的人基本上看不懂那些抓到的数据包。还记得之前Windows的Fiddler抓包工具，当时是用人用来改数据然后撸实物，改各种网页的数据什么的…Thor也可以做到，主要的操作是设置断点，在响应信息体回传的时候修改返回的数据等等。如果只是普通的抓包那肯定是不够的，Thor强大之处就是可以使用过滤器。</p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/thor1/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/hanjia/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://nullptr-1252418998.cos.ap-shanghai.myqcloud.com/blog/e48952d599dbf011c2235239fafa2bf0deccef5a.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="NULL's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/hanjia/" class="post-title-link" itemprop="url">玩游戏的那些时候</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-02-18 16:21:00" itemprop="dateCreated datePublished" datetime="2019-02-18T16:21:00+08:00">2019-02-18</time>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/生活点滴/" itemprop="url" rel="index"><span itemprop="name">生活点滴</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>寒假休息的挺好的，每天打打游戏睡睡觉，基本上不用干啥事。</p>
+<p>啊？codeforces？啥玩意，回家的前几天刷了两道题就没进去过了。</p>
+<p>啊？牛客寒假算法学习？哦，我忘记是哪几天了，没去。</p>
+<p>啊？组内的训练赛？这个是前两天的事，不过晚上打游戏去了，等我看到消息已经在排名了。</p>
+<p>上学期学了啥我还是记得一点的。并查集，二分，深搜，广搜，最小生成树，最短路径。</p>
+<p>没记错的话就学了这么点东西，不过像思维题，数学题，贪心题等等这些都不敢说自己学到了啥，算法和数据结构可以说基础是懂的，因此多多刷题也就行了，不过在家里面，我也不知道为啥，即使很闲我也不想去刷题。</p>
+<p>关于游戏方面我得修改一点东西，之前说的当不算数吧。<br>先说QQ飞车，这个游戏玩了一年多了，我弃游大概有两三个月，主要还是厌倦了，试想一个网络游戏被我硬生生玩成了单机游戏，那该有多么无聊。现在QQ飞车好多了，进了车队然后加了QQ群，还算比较活跃，但是每天玩的时间也不算多，顶多两小时。</p>
+<p>再说刺激战场吧，这个游戏我之前也有玩过一两场。一直到过年的时候我才算真正开始玩这个游戏，几个弟弟们在一起玩刺激战场，凑热闹般和他们一起玩了一下午，然后是大学同学拉我玩，半将就着和他玩了几天，然后养成习惯了一般每天下午和晚上都会和他开黑，毕竟寒假在家闲着无聊，打打游戏还是不错的。但是我为什么要说这些呢？</p>
+<p>今天下午的时候照常和同学开黑，但是玩了两把我就退了。我说下理由，就因为他和一个不认识的小姐姐走得很近，反倒不带着我了…首先我要说的是我玩这个游戏只是娱乐休闲，因此我的KDA只有1.06（我知道自己很菜）这么久来我都知道自己很菜，但是大部分时间我都很快乐。就比如像这种情况，我同学和一个不认识的妹子走一起，我呢？我就只好和另一个队友走了…每当出现这种情况我就很尴尬，如果说我继续跟着我同学就像是打扰他泡妹一样，如果我不跟着我又不知道往那边走，说回去我还是菜，所以最后我得到一个结论，我离不开队友，没有队友我就玩不下去。</p>
+<p>其实很正常，我之前说自己只是娱乐休闲而已，一直不怎么在乎自己的技术，我一直以来都是说自己很菜很菜（我确实打游戏很菜）那么本来是和同学一起玩，他可以带我，但是他带别人去了我就很受不了了，感觉有点吃醋的意思，但是我特么是个钢铁直男，我之所以有这个想法还是因为自己很菜离不开他，在我的游戏观中应该是快快乐乐的玩耍，至于说同学想带妹完全就没必要带上我，我只会感觉自己是多余的。所以就这样了，每次他和哪个妹子玩我都会退出去，然后找借口和他说一声，一来而来也有个三四次了吧，也许是自己游戏观的问题，除了这点其他都挺好的，和小伙伴玩的好好的突然被别人抢走的感觉？？？？算了我也说不清楚了</p>
+<p>今天晚上的寒假训练赛参加了，摆明了说我百度了，急着打游戏（打脸）最后只A了三道题。<br>二十一号就去学校了，我打算重新写一下以前的东西，也会重新去刷题的啦，学习还是要学习的…</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/this-blog/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://nullptr-1252418998.cos.ap-shanghai.myqcloud.com/blog/e48952d599dbf011c2235239fafa2bf0deccef5a.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="NULL's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/this-blog/" class="post-title-link" itemprop="url">关于本博客的</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-02-11 16:28:00" itemprop="dateCreated datePublished" datetime="2019-02-11T16:28:00+08:00">2019-02-11</time>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/生活点滴/" itemprop="url" rel="index"><span itemprop="name">生活点滴</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>这个博客存在快四个月了，也许之前没有误删数据库的话不会像现在这个样子，之前虽然文章很水也有个三四十篇，照那样继续下去，坚持一年半载也不是问题，但是事与愿违，误删数据库之后我就不想再继续了。</p>
+<p>以前都写的什么呢？做错了一个题目，搬上来…不会写的题目，看了别人的题解，搬上来。再加上一些毫无用处的笔记，感觉真没意思，不知道写了究竟有什么用。对于没有接触ACM的人来说压根就没法看，对于接触了ACM的人来说感觉毫无价值，心态有点崩，自己花在这个博客的时间其实也挺多的，到头来感觉都浪费了。</p>
+<p>重建的第十天，没写什么东西。抄了一篇文章，之前写了一篇关于安卓状态栏布局修改的文章，自己强迫症看着那个排版很不舒服就直接删了，很任性的我，也没啥后悔的，就这样子了。</p>
+<p>前几天一直都在看各个博客的模板，我记得我最开始用的是wp的那个二次元的主题akina，因为没接触过别的模板，感觉那个很漂亮。之后看到了typecho的handsome模板，瞬间被吸引了，然后handsome用了两三个月感到了审美疲劳，接着这几天看啥都不顺，没感觉有那个模板顺自己的心意，自己也不会修改什么的，我web方面只上过一个选修课，也就只会普通的css修改。</p>
+<p>找不到喜欢的模板，我有些不想像以前那样继续写下去了，学习笔记？我为何不直接买个本子写下来呢？何况自己acm到底弄搞多久还是一个问题，像我这样的人，呵呵，怎么坚持的下去，说着笑了。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/how-are-you/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://nullptr-1252418998.cos.ap-shanghai.myqcloud.com/blog/e48952d599dbf011c2235239fafa2bf0deccef5a.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="NULL's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/how-are-you/" class="post-title-link" itemprop="url">你怎么样了</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-02-03 17:56:00" itemprop="dateCreated datePublished" datetime="2019-02-03T17:56:00+08:00">2019-02-03</time>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/生活点滴/" itemprop="url" rel="index"><span itemprop="name">生活点滴</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p><img src="https://nullptr-1252418998.cos.ap-shanghai.myqcloud.com/img/3.jpg" alt></p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/how-are-you/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+  </section>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+  </nav>
+
+
+
+          </div>
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="https://nullptr-1252418998.cos.ap-shanghai.myqcloud.com/blog/e48952d599dbf011c2235239fafa2bf0deccef5a.jpg" alt="John Doe">
+            
+              <p class="site-author-name" itemprop="name">John Doe</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">16</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">23</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.dreamwings.cn/" title="https://www.dreamwings.cn/" rel="noopener" target="_blank">千千</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.zgcwkj.top/" title="https://blog.zgcwkj.top/" rel="noopener" target="_blank">zgcwkj</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.ninaner.com/" title="https://www.ninaner.com/" rel="noopener" target="_blank">半夏小栈</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://maxiaohong.top/" title="http://maxiaohong.top/" rel="noopener" target="_blank">中二小学长</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.lovexint.com/" title="https://www.lovexint.com/" rel="noopener" target="_blank">洛小依's Blog</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://azturbo.ml/" title="https://azturbo.ml/" rel="noopener" target="_blank">元芳的小本本</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.happysec.cn/" title="https://www.happysec.cn/" rel="noopener" target="_blank">小北's Blog</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.wumiantu.com/" title="https://www.wumiantu.com/" rel="noopener" target="_blank">撩人的无眠兔</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.xiaojun.org/" title="https://www.xiaojun.org/" rel="noopener" target="_blank">钧言博客</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.tuwary.cn/" title="https://www.tuwary.cn/" rel="noopener" target="_blank">英雄大人</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.oosrc.com/" title="https://blog.oosrc.com/" rel="noopener" target="_blank">夏虫语冰</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.mlbeta.com/" title="https://www.mlbeta.com/" rel="noopener" target="_blank">武汉抢房</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">  <a href="http://www.beian.miit.gov.cn" rel="noopener" target="_blank">湘ICP备18013548号 </a>&copy; 2018 – <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.1.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.1"></script>
+
+  <script src="/js/motion.js?v=7.1.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.1.1"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.1.1"></script>
+
+
+
+
+  
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.1"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

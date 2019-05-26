@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.1.1',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: true,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="“词云”这个概念由美国西北大学新闻学副教授、新媒体专业主任里奇·戈登（Rich Gordon）于近日提出。戈登做过编辑、记者，曾担任迈阿密先驱报（Miami Herald）新媒体版的主任。他一直很关注网络内容发布的最新形式——即那些只有互联网可以采用而报纸、广播、电视等其它媒体都望尘莫及的传播方式。通常，这些最新的、最适合网络的传播方式，也是最好的传播方式。 因此，“词云”就是对网络文本中出现频率">
+<meta name="keywords" content="python,词云,wordcloud">
+<meta property="og:type" content="article">
+<meta property="og:title" content="用python生成词云">
+<meta property="og:url" content="http://yoursite.com/python-wordcloud/index.html">
+<meta property="og:site_name" content="NULL&#39;s Blog">
+<meta property="og:description" content="“词云”这个概念由美国西北大学新闻学副教授、新媒体专业主任里奇·戈登（Rich Gordon）于近日提出。戈登做过编辑、记者，曾担任迈阿密先驱报（Miami Herald）新媒体版的主任。他一直很关注网络内容发布的最新形式——即那些只有互联网可以采用而报纸、广播、电视等其它媒体都望尘莫及的传播方式。通常，这些最新的、最适合网络的传播方式，也是最好的传播方式。 因此，“词云”就是对网络文本中出现频率">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://nullptr-1252418998.cos.ap-shanghai.myqcloud.com/temp/1.png">
+<meta property="og:image" content="https://nullptr-1252418998.cos.ap-shanghai.myqcloud.com/temp/2.png">
+<meta property="og:updated_time" content="2019-04-15T09:53:44.094Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="用python生成词云">
+<meta name="twitter:description" content="“词云”这个概念由美国西北大学新闻学副教授、新媒体专业主任里奇·戈登（Rich Gordon）于近日提出。戈登做过编辑、记者，曾担任迈阿密先驱报（Miami Herald）新媒体版的主任。他一直很关注网络内容发布的最新形式——即那些只有互联网可以采用而报纸、广播、电视等其它媒体都望尘莫及的传播方式。通常，这些最新的、最适合网络的传播方式，也是最好的传播方式。 因此，“词云”就是对网络文本中出现频率">
+<meta name="twitter:image" content="https://nullptr-1252418998.cos.ap-shanghai.myqcloud.com/temp/1.png">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="NULL's Blog" type="application/atom+xml">
+
+
+
+  
+  
+  <link rel="canonical" href="http://yoursite.com/python-wordcloud/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>用python生成词云 | NULL's Blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">NULL's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/python-wordcloud/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://nullptr-1252418998.cos.ap-shanghai.myqcloud.com/blog/e48952d599dbf011c2235239fafa2bf0deccef5a.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="NULL's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">用python生成词云
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-04-09 23:14:53" itemprop="dateCreated datePublished" datetime="2019-04-09T23:14:53+08:00">2019-04-09</time>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Python学习/" itemprop="url" rel="index"><span itemprop="name">Python学习</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><a href="https://baike.baidu.com/item/%E8%AF%8D%E4%BA%91/6952822" target="_blank" rel="noopener">“词云”</a>这个概念由美国西北大学新闻学副教授、新媒体专业主任里奇·戈登（Rich Gordon）于近日提出。戈登做过编辑、记者，曾担任迈阿密先驱报（Miami Herald）新媒体版的主任。他一直很关注网络内容发布的最新形式——即那些只有互联网可以采用而报纸、广播、电视等其它媒体都望尘莫及的传播方式。通常，这些最新的、最适合网络的传播方式，也是最好的传播方式。 因此，“词云”就是对网络文本中出现频率较高的“关键词”予以视觉上的突出，形成“关键词云层”或“关键词渲染”，从而过滤掉大量的文本信息，使浏览网页者只要一眼扫过文本就可以领略文本的主旨。</p>
+<p>我们用python生成词云需要用到第三方库<a href="https://github.com/amueller/word_cloud" target="_blank" rel="noopener">wordcloud</a>，官方的安装说明是这样的。</p>
+<p>wordcloud depends on <code>numpy</code> and <code>pillow</code>.To save the wordcloud into a file, <code>matplotlib</code> can also be installed. See examples below.If there are no wheels available for your version of python, installing the package requires having a C compiler set up. Before installing a compiler, report an issue describing the version of python and operating system being used.</p>
+<a id="more"></a>
+<p>也就是说….不管那么多…装好pip之后我们直接<code>pip install wordcloud</code>，注意一点是在<code>windows(windows10 1709)</code>上面需要<code>Microsoft Visual C++ 14.0</code>这个库，然而这个库在微软官网已经没有下载了，它应该是被集成到其他库里面了，所以最后想用<code>pip</code>安装就必须得安装整个<code>Microsoft Visual C++</code>，大约是6G…而<code>linux(deepin15.9.3)</code>环境上需要再装一个模块<code>tkinter</code>，这个在终端执行<code>pip install python3-tk</code>即可，至此可以放心的导入<code>wordcloud</code>了。</p>
+<p>有四个模块需要了解<code>wordcoud numpy PIL jieba</code>，由于只是用到了它们其中的某一个方法，所以没有了解多深，大致的用法知道就好了。开始的开始，我们是…</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> wordcloud <span class="keyword">import</span> WordCloud</span><br><span class="line"> </span><br><span class="line">text = <span class="string">"富强 民主 文明 和谐 自由 平等 公正 法制 爱国 敬业 诚信 友善"</span></span><br><span class="line">nu = WordCloud(background_color=<span class="string">"white"</span>)</span><br><span class="line"></span><br><span class="line">nu.generate(text)</span><br><span class="line">nu.to_image()</span><br><span class="line">nu.to_file(<span class="string">"test.png"</span>)</span><br></pre></td></tr></table></figure>
+<p>从<code>wordcloud</code>导入<code>WordCloud</code>方法，注意大小写。为什么这样导入不如看下面的写法。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">n = WordCloud(background_color=<span class="string">"white"</span>)</span><br><span class="line">m = wordcloud.Wordcloud(backgroud_color=<span class="string">"white"</span>, font_path=<span class="string">"/home/nullptr/Downloads/src/msyh.ttc"</span>)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>代码能简则简吧。</p>
+</blockquote>
+<p>我们首先设置了一个用空格隔开的字符串，然后设置一个<code>WordCloud</code>方法的对象<code>nu</code>（不知道这样是不是正确的…类与对象实在不熟…Python万物皆为对象应该没错！！！）<br>在方法里面设置了这个对象的属性<code>backgroud_color</code>为白色（其他属性待会列表），然后是字体<code>font_path</code>一定要注意，默认是不支持中文的，所以去找一个支持中文的字体加进来就好了。然后下面三行就是调用<code>generate</code>方法初始化，调用<code>to_image</code>转化成图像，最后保存到文件<code>to_file</code>方法。就完事了…效果如下:</p>
+<p><img src="https://nullptr-1252418998.cos.ap-shanghai.myqcloud.com/temp/1.png" alt="1"></p>
+<p>然后完善一点，jieba模块就不搞了，要做出一个好看的词云在处理字符串这块需要花费很多心思，之前我打算做QQ群聊天各昵称的一个词云，把每一个人的名称都给截出来了，然后用空格隔开来（没用jieba)，但是最后生成的词云。还是很难看，我也没啥办法…</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy, jieba</span><br><span class="line"><span class="keyword">from</span> wordcloud <span class="keyword">import</span> WordCloud</span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"> </span><br><span class="line">text = <span class="string">"富强 民主 文明 和谐 自由 平等 公正 法制 爱国 敬业 诚信 友善"</span></span><br><span class="line"></span><br><span class="line">mk = numpy.array(Image.open(<span class="string">"/home/nullptr/Downloads/src/ChinaMap.png"</span>))</span><br><span class="line">nu = WordCloud(background_color=<span class="string">"white"</span>, font_path=<span class="string">"/home/nullptr/Downloads/src/msyh.ttc"</span>,</span><br><span class="line">               mask=mk, repeat=<span class="literal">True</span>, contour_width=<span class="number">1</span>, contour_color=<span class="string">"red"</span>, colormap=<span class="string">"Reds"</span>,</span><br><span class="line">               max_words=<span class="number">300</span>).generate(text)</span><br><span class="line"></span><br><span class="line">nu.to_image()</span><br><span class="line">nu.to_file(<span class="string">"/home/nullptr/Downloads/src/2.png"</span>)</span><br></pre></td></tr></table></figure>
+<p><img src="https://nullptr-1252418998.cos.ap-shanghai.myqcloud.com/temp/2.png" alt="2"></p>
+<blockquote>
+<p>参考: <a href="https://www.cnblogs.com/jiayongji/p/7119065.html" target="_blank" rel="noopener">jieba</a>模块用法，以及wordcloud各个参数介绍。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">font_path : string //字体路径，需要展现什么字体就把该字体路径+后缀名写上，如：font_path = &apos;黑体.ttf&apos;</span><br><span class="line"></span><br><span class="line">width : int (default=400) //输出的画布宽度，默认为400像素</span><br><span class="line"></span><br><span class="line">height : int (default=200) //输出的画布高度，默认为200像素</span><br><span class="line"></span><br><span class="line">prefer_horizontal : float (default=0.90) //词语水平方向排版出现的频率，默认 0.9 （所以词语垂直方向排版出现频率为 0.1 ）</span><br><span class="line"></span><br><span class="line">mask : nd-array or None (default=None) //如果参数为空，则使用二维遮罩绘制词云。如果 mask 非空，设置的宽高值将被忽略，遮罩形状被 mask 取代。除全白（#FFFFFF）的部分将不会绘制，其余部分会用于绘制词云。如：bg_pic = imread(&apos;读取一张图片.png&apos;)，背景图片的画布一定要设置为白色（#FFFFFF），然后显示的形状为不是白色的其他颜色。可以用ps工具将自己要显示的形状复制到一个纯白色的画布上再保存，就ok了。</span><br><span class="line"></span><br><span class="line">scale : float (default=1) //按照比例进行放大画布，如设置为1.5，则长和宽都是原来画布的1.5倍。</span><br><span class="line"></span><br><span class="line">min_font_size : int (default=4) //显示的最小的字体大小</span><br><span class="line"></span><br><span class="line">font_step : int (default=1) //字体步长，如果步长大于1，会加快运算但是可能导致结果出现较大的误差。</span><br><span class="line"></span><br><span class="line">max_words : number (default=200) //要显示的词的最大个数</span><br><span class="line"></span><br><span class="line">stopwords : set of strings or None //设置需要屏蔽的词，如果为空，则使用内置的STOPWORDS</span><br><span class="line"></span><br><span class="line">background_color : color value (default=”black”) //背景颜色，如background_color=&apos;white&apos;,背景颜色为白色。</span><br><span class="line"></span><br><span class="line">max_font_size : int or None (default=None) //显示的最大的字体大小</span><br><span class="line"></span><br><span class="line">mode : string (default=”RGB”) //当参数为“RGBA”并且background_color不为空时，背景为透明。</span><br><span class="line"></span><br><span class="line">relative_scaling : float (default=.5) //词频和字体大小的关联性</span><br><span class="line"></span><br><span class="line">color_func : callable, default=None //生成新颜色的函数，如果为空，则使用 self.color_func</span><br><span class="line"></span><br><span class="line">regexp : string or None (optional) //使用正则表达式分隔输入的文本</span><br><span class="line"></span><br><span class="line">collocations : bool, default=True //是否包括两个词的搭配</span><br><span class="line"></span><br><span class="line">colormap : string or matplotlib colormap, default=”viridis” //给每个单词随机分配颜色，若指定color_func，则忽略该方法。</span><br><span class="line"></span><br><span class="line">fit_words(frequencies)  //根据词频生成词云</span><br><span class="line">generate(text)  //根据文本生成词云</span><br><span class="line">generate_from_frequencies(frequencies[, ...])   //根据词频生成词云</span><br><span class="line">generate_from_text(text)    //根据文本生成词云</span><br><span class="line">process_text(text)  //将长文本分词并去除屏蔽词（此处指英语，中文分词还是需要自己用别的库先行实现，使用上面的 fit_words(frequencies) ）</span><br><span class="line">recolor([random_state, color_func, colormap])   //对现有输出重新着色。重新上色会比重新生成整个词云快很多。</span><br><span class="line">to_array()  //转化为 numpy array</span><br><span class="line">to_file(filename)   //输出到文件</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/python/" rel="tag"># python</a>
+          
+            <a href="/tags/词云/" rel="tag"># 词云</a>
+          
+            <a href="/tags/wordcloud/" rel="tag"># wordcloud</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/python-web-crawler-first/" rel="next" title="第一个Python爬虫">
+                <i class="fa fa-chevron-left"></i> 第一个Python爬虫
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/black-hole-pic/" rel="prev" title="第一张黑洞照片？！！">
+                第一张黑洞照片？！！ <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="https://nullptr-1252418998.cos.ap-shanghai.myqcloud.com/blog/e48952d599dbf011c2235239fafa2bf0deccef5a.jpg" alt="John Doe">
+            
+              <p class="site-author-name" itemprop="name">John Doe</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">16</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">23</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.dreamwings.cn/" title="https://www.dreamwings.cn/" rel="noopener" target="_blank">千千</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.zgcwkj.top/" title="https://blog.zgcwkj.top/" rel="noopener" target="_blank">zgcwkj</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.ninaner.com/" title="https://www.ninaner.com/" rel="noopener" target="_blank">半夏小栈</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://maxiaohong.top/" title="http://maxiaohong.top/" rel="noopener" target="_blank">中二小学长</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.lovexint.com/" title="https://www.lovexint.com/" rel="noopener" target="_blank">洛小依's Blog</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://azturbo.ml/" title="https://azturbo.ml/" rel="noopener" target="_blank">元芳的小本本</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.happysec.cn/" title="https://www.happysec.cn/" rel="noopener" target="_blank">小北's Blog</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.wumiantu.com/" title="https://www.wumiantu.com/" rel="noopener" target="_blank">撩人的无眠兔</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.xiaojun.org/" title="https://www.xiaojun.org/" rel="noopener" target="_blank">钧言博客</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.tuwary.cn/" title="https://www.tuwary.cn/" rel="noopener" target="_blank">英雄大人</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.oosrc.com/" title="https://blog.oosrc.com/" rel="noopener" target="_blank">夏虫语冰</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.mlbeta.com/" title="https://www.mlbeta.com/" rel="noopener" target="_blank">武汉抢房</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">  <a href="http://www.beian.miit.gov.cn" rel="noopener" target="_blank">湘ICP备18013548号 </a>&copy; 2018 – <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.1.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.1"></script>
+
+  <script src="/js/motion.js?v=7.1.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.1.1"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.1.1"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.1"></script>
+<script src="/js/post-details.js?v=7.1.1"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.1"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
