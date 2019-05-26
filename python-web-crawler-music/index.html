@@ -41,32 +41,6 @@
 
 
 
-  
-  
-  
-  
-
-  
-    
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    
-    
-    <link rel="stylesheet" href="https://fonts.loli.net/css?family=Noto Serif SC:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext">
-  
-
-
-
 
 
 
@@ -521,7 +495,7 @@
 <p>首先点开一首可以正常播放的歌曲，然后添加到播放列表，然后进入网站自带的播放器界面，也就是：<a href="http://play.taihe.com/" target="_blank" rel="noopener">此处</a></p>
 <p><img src="https://nullptr-1252418998.cos.ap-shanghai.myqcloud.com/2019-05-13/5cd97ee69e8c6.png" alt="1"></p>
 <hr>
-<p>然后我们<code>F12</code>查看元素，发现在<code>Elements</code>里面是找不到歌曲链接的，因此用前面学到的知识没办法继续下去，不过没关系，<code>chrome</code>不只有这一个功能，我们点开<code>Network</code>选项，此处是加载的资源概况。慢慢找，可以看到一个<code>name.mp3</code>的元素挺显眼的，歌曲也是<code>mp3</code>格式的，所以就是说这个资源就是服务器给我们浏览器的，而且我们打开这个<code>URL</code>发现正好就是演员这首歌曲，而且还可以直接下载，那不就好了，之后想下载什么歌曲就这样找什么歌曲呗。</p>
+<p>然后我们<code>F12</code>查看元素，发现在<code>Elements</code>里面是找不到歌曲链接的，因此用前面学到的知识没办法继续下去，不过没关系，<code>chrome</code>不只有这一个功能，我们点开 <code>Network</code>选项，此处是加载的资源概况。慢慢找，可以看到一个<code>name.mp3</code>的元素挺显眼的，歌曲也是<code>mp3</code>格式的，所以就是说这个资源就是服务器给我们浏览器的，而且我们打开这个<code>URL</code>发现正好就是演员这首歌曲，而且还可以直接下载，那不就好了，之后想下载什么歌曲就这样找什么歌曲呗。</p>
 <p><img src="https://nullptr-1252418998.cos.ap-shanghai.myqcloud.com/2019-05-13/5cd9833d782ba.png" alt="2"></p>
 <h2 id="链接分析"><a href="#链接分析" class="headerlink" title="链接分析"></a>链接分析</h2><p>但是。。。咱们是为了学爬虫，手动下载一首歌有啥用？那我要把薛之谦的歌曲全部下载下来呢，难道要一个个手动去下载？那很累，不建议，而且这样获取不到那些收费和无版权歌曲。所以咱们分析一下那个<code>URL</code>吧。</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://zhangmenshiting.qianqian.com/data2/music/a70ef051941a4a620d15d9588845f46c/612410195/612410195.mp3?xcode=031ff7d93638dabe2e999d51bc758b81</span><br></pre></td></tr></table></figure>
