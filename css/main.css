@@ -34,6 +34,7 @@ blockquote {
   padding-top: 0px;
 }
 .posts-expand .post-tags a {
+  background-color: #f1f8ff !important;
   border-radius: 5px;
 }
 span#inline-toc {
@@ -1831,7 +1832,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #25ff1c;
+  background: #e9f459;
 }
 .feed-link,
 .chat {
