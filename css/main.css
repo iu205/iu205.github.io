@@ -20,8 +20,42 @@
 ::-webkit-scrollbar-thumb:hover {
   background-color: #f79533;
 }
-.menu {
-  font-weight: 640;
+blockquote {
+  border-left: 4px solid #1098ad !important;
+  background-color: #e3f2fd;
+}
+.container.sidebar-position-left.page-post-detail .post-body h2,
+.container.sidebar-position-left.page-post-detail h3,
+.container.sidebar-position-left.page-post-detail h4,
+.container.sidebar-position-left.page-post-detail h5,
+.container.sidebar-position-left.page-post-detail h6 {
+  border-left: 5px solid #a166ab;
+  padding-left: 30px;
+  padding-top: 0px;
+}
+.posts-expand .post-tags a {
+  border-radius: 5px;
+}
+span#inline-toc {
+  display: inline-block;
+  border-radius: 80% 100% 90% 20%;
+  background-color: #e3f2fd;
+  color: #555;
+  padding: 0.05em 0.4em;
+  margin: 2px 5px 2px 0px;
+  line-height: 1.5;
+}
+.post {
+  margin-top: 60px;
+  margin-bottom: 60px;
+  padding: 25px;
+  -webkit-box-shadow: 0 0 5px rgba(202,203,203,0.5);
+  -moz-box-shadow: 0 0 5px rgba(202,203,204,0.5);
+}
+.menu .menu-item a,
+.menu .menu-item span.exturl {
+  font-size: 15px !important;
+  border-radius: 5px !important;
 }
 /* normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 html {
@@ -1695,11 +1729,6 @@ pre .javascript .function {
   color: #eee;
   border-bottom-color: #eee;
 }
-@media (max-width: 991px) {
-  .sidebar {
-    display: none;
-  }
-}
 .sidebar-inner {
   position: relative;
   padding: 20px 10px;
@@ -1743,7 +1772,6 @@ pre .javascript .function {
   .sidebar-toggle {
     opacity: 0.8;
     right: 20px;
-    display: none;
   }
 }
 .sidebar-toggle-line {
@@ -1803,7 +1831,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ff9;
+  background: #25ff1c;
 }
 .feed-link,
 .chat {
