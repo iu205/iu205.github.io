@@ -1,6 +1,6 @@
 .posts-expand .post-body img {
-  border: none;
-  padding: 0px;
+  border: none !important;
+  padding: 0px !important;
 }
 /* 设置滚动条的样式 */
 /* 参考https://segmentfault.com/a/1190000003708894 */
@@ -33,10 +33,6 @@ blockquote {
   padding-left: 30px;
   padding-top: 0px;
 }
-.posts-expand .post-tags a {
-  background-color: #f1f8ff !important;
-  border-radius: 5px;
-}
 span#inline-toc {
   display: inline-block;
   border-radius: 80% 100% 90% 20%;
@@ -45,18 +41,6 @@ span#inline-toc {
   padding: 0.05em 0.4em;
   margin: 2px 5px 2px 0px;
   line-height: 1.5;
-}
-.post {
-  margin-top: 60px;
-  margin-bottom: 60px;
-  padding: 25px;
-  -webkit-box-shadow: 0 0 5px rgba(202,203,203,0.5);
-  -moz-box-shadow: 0 0 5px rgba(202,203,204,0.5);
-}
-.menu .menu-item a,
-.menu .menu-item span.exturl {
-  font-size: 15px !important;
-  border-radius: 5px !important;
 }
 /* normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 html {
@@ -1832,7 +1816,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #f4d9ff;
+  background: #3c6a8c;
 }
 .feed-link,
 .chat {
